@@ -14,21 +14,20 @@ const calcAverageHumanAge = (ages) => {
   let sumAge = 0;
 
   // USING MAP()
-  const humanAges = ages.map((age, i, allAges) =>
-    age <= 2 ? 2 * age : 16 + age * 4
-  );
+  const humanAges = ages
+    .map((age, i, allAges) => (age <= 2 ? 2 * age : 16 + age * 4))
 
-  // USING FILTER()
-  // .filter((age) => !(age < 18)) OR THE FOLLOWING:
-  const adults = humanAges.filter((age) => age >= 18);
+    // USING FILTER()
+    // .filter((age) => !(age < 18)) OR THE FOLLOWING:
+    .filter((age) => age >= 18)
 
-  // USING REDUCE()
-  const sum = adults.reduce(
-    // FIRST METHOD TO GET THE AVERAGE:  [3,2] => avg => (3+2) / 2 = 2.5 is below!
-    // SECOND METHOD TO GET THE AVERAGE: [3,2] => avg => (3/2 + 2/2) = 1.5 + 1 = 2.5(cur / allAges.length)
-    (acc, cur, i, allAges) => acc + cur / allAges.length,
-    0
-  );
+    // USING REDUCE()
+    .reduce(
+      // FIRST METHOD TO GET THE AVERAGE:  [3,2] => avg => (3+2) / 2 = 2.5 is below!
+      // SECOND METHOD TO GET THE AVERAGE: [3,2] => avg => (3/2 + 2/2) = 1.5 + 1 = 2.5(cur / allAges.length)
+      (acc, cur, i, allAges) => acc + cur / allAges.length,
+      0
+    );
 
   // OR USING forEach:
   // humanAges.forEach((age) => {
@@ -40,7 +39,7 @@ const calcAverageHumanAge = (ages) => {
 
   // for the age, it would be better to do the Math.floor()!
   // return Math.floor(sum / adults.length);
-  return Math.floor(sum); // 44   // 47
+  return Math.floor(humanAges); // 44   // 47
 };
 const AverageAge1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 console.log(AverageAge1); // [36, 4, 32, 2, 76, 48, 28]
